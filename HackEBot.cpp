@@ -16,8 +16,8 @@ HackEBot::HackEBot()
 {
   pinMode(servoR, OUTPUT);
   pinMode(servoL, OUTPUT);
-  _servoR = 0;
-  _servoL = 1;
+  int servoR = 0;
+  int servoL = 1;
   //For delayMicroseconds: Half way is 745. +745 gose CW, -745 gose CCW
   // 604 microseconds at 30 times = CW 360%
   // 876 microseconds at 30 times = CCW 360%
