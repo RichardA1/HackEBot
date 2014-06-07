@@ -10,7 +10,7 @@
  #include "WProgram.h"
 #endif
 
-#include "Hack-E-Bot_Movement.h"
+#include "HackEBot.h"
 
 HackEBot::HackEBot()
 {
