@@ -4,15 +4,20 @@
   Released into the public domain.
 */
 
-#include "Arduino.h"
+#if ARDUINO >= 100
+ #include "Arduino.h"
+#else
+ #include "WProgram.h"
+#endif
+
 #include "Hack-E-Bot_Movement.h"
 
-Hack-E-Bot_Movement::Hack-E-Bot_Movement(int servoR, int servoL)
+HackEBot::HackEBot()
 {
   pinMode(servoR, OUTPUT);
   pinMode(servoL, OUTPUT);
-  _servoR = servoR;
-  _servoL = servoL;
+  _servoR = 0;
+  _servoL = 1;
   //For delayMicroseconds: Half way is 745. +745 gose CW, -745 gose CCW
   // 604 microseconds at 30 times = CW 360%
   // 876 microseconds at 30 times = CCW 360%
@@ -20,7 +25,7 @@ Hack-E-Bot_Movement::Hack-E-Bot_Movement(int servoR, int servoL)
   const int turnCCW = 856;
 }
 
-void Hack-E-Bot_Movement::Go_forward(){ // Drive drive forward
+void HackEBot::Go_forward(){ // Drive drive forward
     // Start to turn the left wheel CCW.
     digitalWrite(servoL, HIGH);
     delayMicroseconds(turnCCW);
@@ -31,7 +36,7 @@ void Hack-E-Bot_Movement::Go_forward(){ // Drive drive forward
     digitalWrite(servoR, LOW);
     delay(10);
 }
-void Hack-E-Bot_Movement::Go_backward(){ // Drive drive backward
+void HackEBot::Go_backward(){ // Drive drive backward
     // Start to turn the left wheel CW.
     digitalWrite(servoL, HIGH);
     delayMicroseconds(turnCW);
@@ -42,7 +47,7 @@ void Hack-E-Bot_Movement::Go_backward(){ // Drive drive backward
     digitalWrite(servoR, LOW);
     delay(10);
 }
-void Hack-E-Bot_Movement::TurnL(){ // Turn Left
+void HackEBot::TurnL(){ // Turn Left
     // Start to turn the left wheel CCW.
     digitalWrite(servoL, HIGH);
     delayMicroseconds(turnCCW);
@@ -53,7 +58,7 @@ void Hack-E-Bot_Movement::TurnL(){ // Turn Left
     digitalWrite(servoR, LOW);
     delay(10);
 }
-void Hack-E-Bot_Movement::TurnR(){ // Turn Right
+void HackEBot::TurnR(){ // Turn Right
     // Start to turn the left wheel CW.
     digitalWrite(servoL, HIGH);
     delayMicroseconds(turnCW);
