@@ -20,51 +20,51 @@ HackEBot::HackEBot()
   //For delayMicroseconds: Half way is 745. +745 gose CW, -745 gose CCW
   // 604 microseconds at 30 times = CW 360%
   // 876 microseconds at 30 times = CCW 360%
-  const int turnCW = 604;
-  const int turnCCW = 856;
+  //const int turnCW = 604;
+  //const int turnCCW = 856;
 }
 
 void HackEBot::Go_forward(){ // Drive drive forward
     // Start to turn the left wheel CCW.
     digitalWrite(0, HIGH);
-    delayMicroseconds(turnCCW);
+    delayMicroseconds(856);
     digitalWrite(0, LOW);
     // Start to turn the right wheel CW.
     digitalWrite(1, HIGH);
-    delayMicroseconds(turnCW);
+    delayMicroseconds(604);
     digitalWrite(1, LOW);
     delay(10);
 }
 void HackEBot::Go_backward(){ // Drive drive backward
     // Start to turn the left wheel CW.
     digitalWrite(0, HIGH);
-    delayMicroseconds(turnCW);
+    delayMicroseconds(604);
     digitalWrite(0, LOW);
     // Start to turn the right wheel CCW.
     digitalWrite(1, HIGH);
-    delayMicroseconds(turnCCW);
+    delayMicroseconds(856);
     digitalWrite(1, LOW);
     delay(10);
 }
 void HackEBot::TurnL(){ // Turn Left
     // Start to turn the left wheel CCW.
     digitalWrite(0, HIGH);
-    delayMicroseconds(turnCCW);
+    delayMicroseconds(856);
     digitalWrite(0, LOW);
     // Start to turn the right wheel CCW.
     digitalWrite(1, HIGH);
-    delayMicroseconds(turnCCW);
+    delayMicroseconds(856);
     digitalWrite(1, LOW);
     delay(10);
 }
 void HackEBot::TurnR(){ // Turn Right
     // Start to turn the left wheel CW.
     digitalWrite(0, HIGH);
-    delayMicroseconds(turnCW);
+    delayMicroseconds(604);
     digitalWrite(0, LOW);
     // Start to turn the right wheel CW.
     digitalWrite(1, HIGH);
-    delayMicroseconds(turnCW);
+    delayMicroseconds(604);
     digitalWrite(1, LOW);
     delay(10);
 }
