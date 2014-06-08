@@ -1,6 +1,7 @@
+
 #include <HackEBot.h>
 
-HackEBot move;
+HackEBot move(0,1);
 
 void setup()
 {
