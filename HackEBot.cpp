@@ -12,11 +12,12 @@
 
 #include "HackEBot.h"
 
-HackEBot::HackEBot()
+HackEBot::HackEBot(uint8_t servoR, uint8_t servoL)
 {
-
-  pinMode(0, OUTPUT);
-  pinMode(1, OUTPUT);
+  uint8_t servoR;
+  uint8_t servoL;
+  pinMode(servoR, OUTPUT);
+  pinMode(servoL, OUTPUT);
   //For delayMicroseconds: Half way is 745. +745 gose CW, -745 gose CCW
   // 604 microseconds at 30 times = CW 360%
   // 876 microseconds at 30 times = CCW 360%
@@ -26,45 +27,45 @@ HackEBot::HackEBot()
 
 void HackEBot::Go_forward(){ // Drive drive forward
     // Start to turn the left wheel CCW.
-    digitalWrite(0, HIGH);
+    digitalWrite(servoR, HIGH);
     delayMicroseconds(856);
-    digitalWrite(0, LOW);
+    digitalWrite(servoR, LOW);
     // Start to turn the right wheel CW.
-    digitalWrite(1, HIGH);
+    digitalWrite(servoL, HIGH);
     delayMicroseconds(604);
-    digitalWrite(1, LOW);
+    digitalWrite(servoL, LOW);
     delay(10);
 }
 void HackEBot::Go_backward(){ // Drive drive backward
     // Start to turn the left wheel CW.
-    digitalWrite(0, HIGH);
+    digitalWrite(servoR, HIGH);
     delayMicroseconds(604);
-    digitalWrite(0, LOW);
+    digitalWrite(servoR, LOW);
     // Start to turn the right wheel CCW.
-    digitalWrite(1, HIGH);
+    digitalWrite(servoL, HIGH);
     delayMicroseconds(856);
-    digitalWrite(1, LOW);
+    digitalWrite(servoL, LOW);
     delay(10);
 }
 void HackEBot::TurnL(){ // Turn Left
     // Start to turn the left wheel CCW.
-    digitalWrite(0, HIGH);
+    digitalWrite(servoR, HIGH);
     delayMicroseconds(856);
-    digitalWrite(0, LOW);
+    digitalWrite(servoR, LOW);
     // Start to turn the right wheel CCW.
-    digitalWrite(1, HIGH);
+    digitalWrite(servoL, HIGH);
     delayMicroseconds(856);
-    digitalWrite(1, LOW);
+    digitalWrite(servoL, LOW);
     delay(10);
 }
-void HackEBot::TurnR(){ // Turn Right
+void HackEBot::TurnR(servoR, servoL){ // Turn Right
     // Start to turn the left wheel CW.
-    digitalWrite(0, HIGH);
+    digitalWrite(servoR, HIGH);
     delayMicroseconds(604);
-    digitalWrite(0, LOW);
+    digitalWrite(servoR, LOW);
     // Start to turn the right wheel CW.
-    digitalWrite(1, HIGH);
+    digitalWrite(servoL, HIGH);
     delayMicroseconds(604);
-    digitalWrite(1, LOW);
+    digitalWrite(servoL, LOW);
     delay(10);
 }
