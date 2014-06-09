@@ -12,10 +12,12 @@
 
 #include "HackEBot.h"
 
-HackEBot::HackEBot(uint8_t servoR, uint8_t servoL)
+HackEBot::HackEBot(uint8_t r, uint8_t l) : servoR(r) servoL(l)
 {
-  uint8_t servoR;
-  uint8_t servoL;
+  
+}
+
+HackEBot::~HackEBot() {
   pinMode(servoR, OUTPUT);
   pinMode(servoL, OUTPUT);
   //For delayMicroseconds: Half way is 745. +745 gose CW, -745 gose CCW
