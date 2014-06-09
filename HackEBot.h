@@ -11,7 +11,8 @@
 
 class HackEBot {
   public:
-    HackEBot(uint8_t servoR,uint8_t servoL);
+    HackEBot(uint8_t r, uint8_t l);
+    ~HackEBot();
     void Go_forward(); //-- to drive forward
     void Go_backward(); //-- to drive backward
     void TurnR(); //-- to turn right
