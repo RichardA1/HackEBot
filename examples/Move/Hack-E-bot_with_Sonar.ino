@@ -1,5 +1,5 @@
-const int servo1 = 0;  // Servo control line (orange) on Trinket Pin #0
-const int servo2 = 1;   // Servo control line (orange) on Trinket Pin #1
+#include <HackEBot.h>
+
 const int sonarTrig = 2;   // Connect the sonar signal pin to this pin on the Trinket.
 const int sonarEcho = 3;
 
@@ -9,67 +9,36 @@ const int obstacle = 8;
 // Duration of a ping, distance in inches, distance converted to cm.
 long duration, inches, cm;
 
-//For delayMicroseconds: Half way is 745. +745 gose CW, -745 gose CCW
-// 604 microseconds at 30 times = CW 360%
-// 876 microseconds at 30 times = CCW 360%
-const int turnCW = 604;
-const int turnCCW = 856;
-
-int var = 0;  // Used to loop the servo movements
+// Set-up the movement controls using;
+// 		L = Left Servo Pin
+// 		R = Right Servo Pin
+// 		C = Right Servo offset
+// 		W = Left Servo offset
+// Servo offsets should be 0 unless the robot dose not drive strait.
+// HackEBot robot(L, R, C, W);
+   HackEBot robot(0, 2, 0, 0);
+   
 int randNumber = 0;  // Used to choose a direction to turn
 
 void setup()
 {
-  pinMode(servo1, OUTPUT);
-  pinMode(servo2, OUTPUT);
   pinMode(sonarTrig, OUTPUT);
   pinMode(sonarEcho, INPUT);
 }
 
-void Go_forward(){ // Drive drive forward
-    // Start to turn the left wheel CCW.
-    digitalWrite(servo1, HIGH);
-    delayMicroseconds(turnCCW);
-    digitalWrite(servo1, LOW);
-    // Start to turn the right wheel CW.
-    digitalWrite(servo2, HIGH);
-    delayMicroseconds(turnCW);
-    digitalWrite(servo2, LOW);
-    delay(10);
+/* The Hack-E-Bot can now be programmed to move by giving it instructions like:
+Go_forward(); -- to drive forward
+Go_backward(); -- to drive backward
+TurnR(); -- to turn right
+TurnL(); -- to turn left
+*/
+void loop()
+{  
+   SonarPing();
+   //SonarScan();
+  robot.MoveF(3);
 }
-void Go_backward(){ // Drive drive backward
-    // Start to turn the left wheel CW.
-    digitalWrite(servo1, HIGH);
-    delayMicroseconds(turnCW);
-    digitalWrite(servo1, LOW);
-    // Start to turn the right wheel CCW.
-    digitalWrite(servo2, HIGH);
-    delayMicroseconds(turnCCW);
-    digitalWrite(servo2, LOW);
-    delay(10);
-}
-void TurnL(){ // Turn Left
-    // Start to turn the left wheel CCW.
-    digitalWrite(servo1, HIGH);
-    delayMicroseconds(turnCCW);
-    digitalWrite(servo1, LOW);
-    // Start to turn the right wheel CCW.
-    digitalWrite(servo2, HIGH);
-    delayMicroseconds(turnCCW);
-    digitalWrite(servo2, LOW);
-    delay(10);
-}
-void TurnR(){ // Turn Right
-    // Start to turn the left wheel CW.
-    digitalWrite(servo1, HIGH);
-    delayMicroseconds(turnCW);
-    digitalWrite(servo1, LOW);
-    // Start to turn the right wheel CW.
-    digitalWrite(servo2, HIGH);
-    delayMicroseconds(turnCW);
-    digitalWrite(servo2, LOW);
-    delay(10);
-}
+
 void SonarPing() {
   /* The PING))) is triggered by a HIGH pulse of 2 or more microseconds.
   Give a short LOW pulse beforehand to ensure a clean HIGH pulse:*/
@@ -90,41 +59,14 @@ void SonarPing() {
   if ( cm < obstacle ) {
     // back_track * delay(15) = distance the rover will back-up during 
     // obstacle avoidance.
-      var = 0;
-      while(var < 30){
-        Go_backward();
-        var++;
-      }
-      var = 0;
+      robot.MoveB(30);
       randNumber = random(200);
       if (randNumber < 99) {
-        while(var < 15){
-          TurnL();
-          var++;
-          }
+        robot.TurnL(16);
       } else {
         while(var < 15){
-          TurnR();
-          var++;
-        }
+        robot.TurnR(16);
       }
-    }
-}
-
-/* The Hack-E-Bot can now be programmed to move by giving it instructions like:
-Go_forward(); -- to drive forward
-Go_backward(); -- to drive backward
-TurnR(); -- to turn right
-TurnL(); -- to turn left
-*/
-void loop()
-{  
-   SonarPing();
-   //SonarScan();
-  var = 0;
-  while(var < 5){
-    Go_forward();
-    var++;
     }
 }
 
