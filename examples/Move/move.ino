@@ -1,7 +1,7 @@
 
 #include <HackEBot.h>
 
-HackEBot move(0,1);
+HackEBot robot(0,1);
 
 void setup()
 {
@@ -9,6 +9,6 @@ void setup()
 
 void loop()
 {
-  move.TurnR();
+  HackEBot.TurnR();
   delay(30);
 }
