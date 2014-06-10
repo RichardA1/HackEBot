@@ -9,6 +9,6 @@ void setup()
 
 void loop()
 {
-  HackEBot.TurnR();
+  robot.TurnR();
   delay(30);
 }
