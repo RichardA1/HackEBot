@@ -64,7 +64,6 @@ void SonarPing() {
       if (randNumber < 99) {
         robot.TurnL(16);
       } else {
-        while(var < 15){
         robot.TurnR(16);
       }
     }
