@@ -1,6 +1,6 @@
 /*
-  Morse.cpp - Library for flashing Morse code.
-  Created by David A. Mellis, November 2, 2007.
+  HackEBot.cpp - Library for moving the Hack-E-Bot.
+  Created by Richard Albritton, June 9, 2014.
   Released into the public domain.
 */
 
@@ -12,12 +12,8 @@
 
 #include "HackEBot.h"
 
-HackEBot::HackEBot(uint8_t r, uint8_t l) : servoR(r) servoL(l)
+HackEBot::HackEBot(uint8_t servoR, uint8_t servoL)
 {
-  
-}
-
-HackEBot::~HackEBot() {
   pinMode(servoR, OUTPUT);
   pinMode(servoL, OUTPUT);
   //For delayMicroseconds: Half way is 745. +745 gose CW, -745 gose CCW
@@ -27,7 +23,7 @@ HackEBot::~HackEBot() {
   //const int turnCCW = 856;
 }
 
-void HackEBot::Go_forward(){ // Drive drive forward
+void HackEBot::moveF(){ // Drive drive forward
     // Start to turn the left wheel CCW.
     digitalWrite(servoR, HIGH);
     delayMicroseconds(856);
@@ -38,7 +34,7 @@ void HackEBot::Go_forward(){ // Drive drive forward
     digitalWrite(servoL, LOW);
     delay(10);
 }
-void HackEBot::Go_backward(){ // Drive drive backward
+void HackEBot::moveB(){ // Drive drive backward
     // Start to turn the left wheel CW.
     digitalWrite(servoR, HIGH);
     delayMicroseconds(604);
@@ -60,7 +56,7 @@ void HackEBot::TurnL(){ // Turn Left
     digitalWrite(servoL, LOW);
     delay(10);
 }
-void HackEBot::TurnR(servoR, servoL){ // Turn Right
+void HackEBot::TurnR(){ // Turn Right
     // Start to turn the left wheel CW.
     digitalWrite(servoR, HIGH);
     delayMicroseconds(604);
