@@ -1,7 +1,8 @@
-
 #include <HackEBot.h>
 
-HackEBot robot(0, 1);
+// Set-up the movement controls using;
+// HackEBot robot(Left Servo Pin, Right Servo Pin);
+   HackEBot robot(2, 0);
 
 void setup()
 {
@@ -9,6 +10,6 @@ void setup()
 
 void loop()
 {
-  robot.TurnR();
+  robot.MoveF();
   delay(30);
 }
