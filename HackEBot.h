@@ -1,7 +1,6 @@
-// This is an ultra simple software servo driver. For best
-// results, use with a timer0 interrupt to refresh() all
-// your servos once every 20 milliseconds!
-// Written by Limor Fried for Adafruit Industries, BSD license
+// This will allow the easy control of the two servos for the Hack-E-Bot.
+// 
+// Written by Richard Albritton for Hack-E-Bot Robotics, BSD license
 
 #if ARDUINO >= 100
  #include "Arduino.h"
@@ -11,10 +10,9 @@
 
 class HackEBot {
   public:
-    HackEBot(uint8_t r, uint8_t l);
-    ~HackEBot();
-    void Go_forward(); //-- to drive forward
-    void Go_backward(); //-- to drive backward
+    HackEBot(uint8_t servoR, uint8_t servoL);
+    void moveF(); //-- to drive forward
+    void moveB(); //-- to drive backward
     void TurnR(); //-- to turn right
     void TurnL(); //-- to turn left
   private:
