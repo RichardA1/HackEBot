@@ -1,7 +1,7 @@
 
 #include <HackEBot.h>
 
-HackEBot robot(0,1);
+HackEBot robot(0, 1);
 
 void setup()
 {
