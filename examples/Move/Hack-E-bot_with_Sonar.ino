@@ -16,7 +16,7 @@ long duration, inches, cm;
 // 		W = Left Servo offset
 // Servo offsets should be 0 unless the robot dose not drive strait.
 // HackEBot robot(L, R, C, W);
-   HackEBot robot(0, 2, 0, 0);
+   HackEBot robot(0, 4, 0, 0);
    
 int randNumber = 0;  // Used to choose a direction to turn
 
