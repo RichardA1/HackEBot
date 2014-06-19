@@ -17,8 +17,11 @@ class Sonar {
 	long cm;
 	boolean wall = false;
   private:
-   int sonarTrig;
-   int sonarEcho;
+   int TrigPin;
+   int EchoPin;
    int obstacle; // Number in cm when the rover will reverse and try to navigate around.
+   long microseconds;
+   long microsecondsToInches;
+   long microsecondsToCentimeters;
    int randNumber = 0;
 };
