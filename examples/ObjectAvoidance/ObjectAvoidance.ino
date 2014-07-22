@@ -1,11 +1,17 @@
 #include <HackEBot_Move.h>
 #include <HackEBot_Sonar.h>
 
+int LeftServoPin = 12;
+int RightServoPin = 7;
+
 // HackEBot_Move robot(LeftPin, RightPin, Speed, LeftStop, RightStop);
-   HackEBot_Move robot(12, 7, 1383, 1268);
+   HackEBot_Move robot(LeftServoPin, RightServoPin, 1383, 1268);
    
+int SonarTrig = 4;
+int SonarEcho = 2;
+
 // Sonar Obstacle(sonarTrig, sonarEcho);
-   HackEBot_Sonar Obstacle(4, 2);
+   HackEBot_Sonar Obstacle(SonarTrig, SonarEcho);
    
 int MoveSpeed = 200;
 int TurnSpeed = 150;
