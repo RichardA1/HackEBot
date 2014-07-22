@@ -7,11 +7,11 @@ int RightServoPin = 7;
 // HackEBot_Move robot(LeftPin, RightPin, Speed, LeftStop, RightStop);
    HackEBot_Move robot(LeftServoPin, RightServoPin, 1383, 1268);
    
-int SonarTrig = 4; // 	(Green wire)
-int SonarEcho = 2; // 	(Blue wire)
+int SonarTrigPin = 4; // 	(Green wire)
+int SonarEchoPin = 2; // 	(Blue wire)
 
 // Sonar Obstacle(sonarTrig, sonarEcho);
-   HackEBot_Sonar Obstacle(SonarTrig, SonarEcho);
+   HackEBot_Sonar Obstacle(SonarTrigPin, SonarEchoPin);
    
 int MoveSpeed = 200;
 int TurnSpeed = 150;
