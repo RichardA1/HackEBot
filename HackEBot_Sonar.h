@@ -1,4 +1,4 @@
-// This will allow the easy control of the two servos for the Hack-E-Bot.
+// This will allow the easy get feedback from the Sonar sensor for the Hack-E-Bot.
 // 
 // Written by Richard Albritton for Hack-E-Bot Robotics, BSD license
 
