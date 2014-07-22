@@ -21,7 +21,7 @@ HackEBot_Line_Sensor::HackEBot_Line_Sensor(int P, int T)
 boolean HackEBot_Line_Sensor::ReadLine(){
   LineSensorValue = analogRead(SensorPin);
   if (LineSensorValue > Threshold){ 
-    Return true; // is on the Line
+    return true; // is on the Line
     } else {
     return false; // is not on the Line
     }
