@@ -12,17 +12,38 @@
 
 #include "HackEBot_Line_Sensor.h"
 
-HackEBot_Line_Sensor::HackEBot_Line_Sensor(int P, int T)
+HackEBot_Line_Sensor::HackEBot_Line_Sensor(int T)
 {
-  SensorPin = P; //      The Pin that the sensor is connected to (Purple Wire)
   Threshold = T; //      The point were White becomes Black.
 }
 
-boolean HackEBot_Line_Sensor::ReadLine(){
+boolean HackEBot_Line_Sensor::ReadLine(int P){
+  SensorPin = P; //      The Pin that the sensor is connected to (Purple Wire)
   LineSensorValue = analogRead(SensorPin);
   if (LineSensorValue > Threshold){ 
     return true; // is on the Line
-    } else {
+  } else {
     return false; // is not on the Line
+  }
+}
+
+char HackEBot_Line_Sensor::Read2Sensors(int C, int L){
+  CenterSensorPin = C;
+  LeftSensorPin = L;
+  CenterSensorValue = analogRead(CenterSensorPin);
+  LeftSensorValue = analogRead(LeftSensorPin);
+
+  if (CenterSensorValue > Threshold){ // Line
+    if (LeftSensorValue < Threshold){ // Paper
+      return 'F';
+    }else{ // Line - LeftSensor
+      return 'L';
     }
+  }else{ // Paper - CenterSensor
+    if (LeftSensorValue < Threshold){ // Paper
+      return 'R';
+    }else{  // Line - LeftSensor
+      return 'L';
+    }
+  }
 }
