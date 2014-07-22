@@ -7,8 +7,8 @@ int RightServoPin = 7;
 // HackEBot_Move robot(LeftPin, RightPin, Speed, LeftStop, RightStop);
    HackEBot_Move robot(LeftServoPin, RightServoPin, 1383, 1268);
    
-int SonarTrig = 4;
-int SonarEcho = 2;
+int SonarTrig = 4; // 	(Green wire)
+int SonarEcho = 2; // 	(Blue wire)
 
 // Sonar Obstacle(sonarTrig, sonarEcho);
    HackEBot_Sonar Obstacle(SonarTrig, SonarEcho);
