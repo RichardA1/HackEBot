@@ -12,12 +12,12 @@
 
 #include "HackEBot_Move.h"
 
-HackEBot_Move::HackEBot_Move(int L, int R, int C, int W)
+HackEBot_Move::HackEBot_Move(int L, int R)
 {
   servoL = L;
   servoR = R;
-  turnCW = C;
-  turnCCW = W;
+  turnCW = 1500;
+  turnCCW = 1500;
   pinMode(servoL, OUTPUT);
   pinMode(servoR, OUTPUT);
 }

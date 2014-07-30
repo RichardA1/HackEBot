@@ -10,7 +10,7 @@
 
 class HackEBot_Move {
   public:
-    HackEBot_Move(int L, int R, int C, int W);
+    HackEBot_Move(int L, int R);
     void MoveF(int S, int Z); //-- to drive forward, S = repeat number, Z = Speed.
     void MoveB(int S, int Z); //-- to drive backward, S = repeat number, Z = Speed.
     void TurnR(int S, int Z); //-- to turn right, S = repeat number, Z = Speed.

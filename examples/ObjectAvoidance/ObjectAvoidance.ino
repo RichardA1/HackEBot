@@ -1,11 +1,8 @@
 #include <HackEBot_Move.h>
 #include <HackEBot_Sonar.h>
 
-int LeftServoPin = 12;
-int RightServoPin = 7;
-
-// HackEBot_Move robot(LeftPin, RightPin, Speed, LeftStop, RightStop);
-   HackEBot_Move robot(LeftServoPin, RightServoPin, 1383, 1268);
+// HackEBot_Move robot(LeftPin, RightPin);
+   HackEBot_Move robot(12, 7);
    
 int SonarTrigPin = 4; // 	(Green wire)
 int SonarEchoPin = 2; // 	(Blue wire)

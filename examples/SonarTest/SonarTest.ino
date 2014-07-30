@@ -1,5 +1,5 @@
 /*
-This exsample will turn the onbourd LED on when an object gets within 8cm of the Sonar sensor.
+This example will turn the on-board LED on when an object gets within 8cm of the Sonar sensor.
 
 The same basic format can allow your Hack-E-Bot to react to it's environment.
 */
@@ -7,7 +7,7 @@ The same basic format can allow your Hack-E-Bot to react to it's environment.
 // Attach the Sonar.h library to this code
 #include <HackEBot_Sonar.h>
 
-// Set-up the Sonar sensor for boject detection;
+// Set-up the Sonar sensor for object detection;
 // 		sonarTrig = Sends the chirp (Green wire)
 // 		sonarEcho = Listens for the chirp (Blue wire)
 // Sonar Obstacle(sonarTrig, sonarEcho);
@@ -27,9 +27,9 @@ void setup() {
 void loop()
 { 
  // When Obstacle.Ping(D) is used, it will return:
- //       "true" is an obstical is detected 
- //       "false" if there is no obstical
- // The distance from an obstical is set by entering the distance, D, in centameters.
+ //       "true" is an obstacle is detected 
+ //       "false" if there is no obstacle
+ // The distance from an obstacle is set by entering the distance, D, in centimetres.
   if (Obstacle.Ping(8)){     // if an object gets within 8cm of the sonar sensor, do the following:
    digitalWrite(led, HIGH);  // turn the LED on (HIGH is the voltage level)
  } else {                    // if an object is not within 8cm of the sonar sensor, then do the following:
