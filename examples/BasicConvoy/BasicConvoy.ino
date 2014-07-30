@@ -23,7 +23,6 @@ int LineMove;
 
 void setup()
 {
-  Serial.begin(9600);
 }
 
 int randNumber = 0;  // Used to choose a direction to turn
