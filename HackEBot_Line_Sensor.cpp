@@ -19,6 +19,7 @@ HackEBot_Line_Sensor::HackEBot_Line_Sensor(int T)
 
 boolean HackEBot_Line_Sensor::ReadLine(int P){
   SensorPin = P; //      The Pin that the sensor is connected to (Purple Wire)
+  delay(10);
   LineSensorValue = analogRead(SensorPin);
   if (LineSensorValue > Threshold){ 
     return true; // is on the Line
@@ -32,7 +33,8 @@ char HackEBot_Line_Sensor::Read2Sensors(int C, int L){
   LeftSensorPin = L;
   CenterSensorValue = analogRead(CenterSensorPin);
   LeftSensorValue = analogRead(LeftSensorPin);
-
+  delay(10);
+  
   if (CenterSensorValue > Threshold){ // Line
     if (LeftSensorValue < Threshold){ // Paper
       return 'F';
