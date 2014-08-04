@@ -17,8 +17,6 @@ void setup()
 {
 }
 
-int randNumber = 0;  // Used to choose a direction to turn
-
 void loop()
 {
   LineMove = Line.Read2Sensors(CenterLinePin, LeftLinePin);
