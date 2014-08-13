@@ -20,6 +20,8 @@ HackEBot_Move::HackEBot_Move(int L, int R)
   CenterR = 1500;
   pinMode(servoL, OUTPUT);
   pinMode(servoR, OUTPUT);
+  speedL = 6;
+  speedR = 6;
 }
 
 long HackEBot_Move::ServoSetup(int L, int l, int R, int r){ // Calibrate the servos
