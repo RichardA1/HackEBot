@@ -16,11 +16,11 @@ HackEBot_Move::HackEBot_Move(int L, int R)
 {
   servoL = L;
   servoR = R;
-  CenterL = 1500;
+  CenterL = 1500; //-- Center pulse for the FS90R Servo from Data Sheet (beween 900us and 2100us)
   CenterR = 1500;
   pinMode(servoL, OUTPUT);
   pinMode(servoR, OUTPUT);
-  speedL = 6;
+  speedL = 6; // From Data Sheet (1500 - 900)/100 gives us the number we add to center in order to reach 1% speed.
   speedR = 6;
 }
 
