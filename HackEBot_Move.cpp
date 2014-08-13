@@ -16,34 +16,37 @@ HackEBot_Move::HackEBot_Move(int L, int R)
 {
   servoL = L;
   servoR = R;
-  turnCW = 1500;
-  turnCCW = 1500;
+  CenterL = 1500;
+  CenterR = 1500;
   pinMode(servoL, OUTPUT);
   pinMode(servoR, OUTPUT);
 }
 
-HackEBot_Move::ServoSetup(int L, int l, int R, int r){ // Calibrate the servos
+long HackEBot_Move::ServoSetup(int L, int l, int R, int r){ // Calibrate the servos
   //-- L  the forward limit of the Left Servo
   //-- l  the backward limit of the Left Servo
   //-- R  the forward limit of the Right Servo
   //-- r  the backward limit of the Right Servo
   
   LShift = abs(L - l)/2; // Find the center pulse for the Left Servo
-  if (L < l){ turnCW = LShift + L; } else { turnCW = LShift + l; }
+  CenterL = LShift + max(L, l);
   
   RShift = abs(R - r)/2; // Find the center pulse for the Right Servo
-  if (R < r){ turnCCW = RShift + R; } else { turnCCW = RShift + r; }
+  CenterR = RShift + max(R, r);
   delay(10);
+  
+  speedL = round(LShift/100);
+  speedR = round(RShift/100);
 }
 
 void HackEBot_Move::Calibrate(){ // Calibrate the servos
   // Start to turn the left wheel CW.
   digitalWrite(servoR, HIGH);
-  delayMicroseconds(turnCCW);
+  delayMicroseconds(CenterR);
   digitalWrite(servoR, LOW);
   // Start to turn the right wheel CCW.
   digitalWrite(servoL, HIGH);
-  delayMicroseconds(turnCW);
+  delayMicroseconds(CenterL);
   digitalWrite(servoL, LOW);
   delay(10);
 }
@@ -54,11 +57,11 @@ void HackEBot_Move::MoveF(int S, int Z){ // Drive drive forward, S = repeat numb
     while(0 < steps){
       // Start to turn the left wheel CW.
       digitalWrite(servoR, HIGH);
-      delayMicroseconds(turnCCW - speed);
+      delayMicroseconds(CenterR - (speedR * speed));
       digitalWrite(servoR, LOW);
       // Start to turn the right wheel CCW.
       digitalWrite(servoL, HIGH);
-      delayMicroseconds(turnCW + speed);
+      delayMicroseconds(CenterL + (speedL * speed));
       digitalWrite(servoL, LOW);
       delay(10);
 	steps--;
@@ -71,11 +74,11 @@ void HackEBot_Move::MoveB(int S, int Z){ // Drive drive backward, S = repeat num
     while(0 < steps){
     // Start to turn the left wheel CCW.
     digitalWrite(servoR, HIGH);
-    delayMicroseconds(turnCW + speed);
+    delayMicroseconds(CenterR + (speedR * speed));
     digitalWrite(servoR, LOW);
     // Start to turn the right wheel CW.
     digitalWrite(servoL, HIGH);
-    delayMicroseconds(turnCCW - speed);
+    delayMicroseconds(CenterL - (speedL * speed));
     digitalWrite(servoL, LOW);
     delay(10);
 	steps--;
@@ -88,11 +91,11 @@ void HackEBot_Move::TurnL(int S, int Z){ // Turn Left, S = repeat number, Z = Sp
     while(0 < steps){
     // Start to turn the left wheel CCW.
     digitalWrite(servoR, HIGH);
-    delayMicroseconds(turnCCW - speed);
+    delayMicroseconds(CenterR - (speedR * speed));
     digitalWrite(servoR, LOW);
     // Start to turn the right wheel CCW.
     digitalWrite(servoL, HIGH);
-    delayMicroseconds(turnCCW - speed);
+    delayMicroseconds(CenterL - (speedL * speed));
     digitalWrite(servoL, LOW);
     delay(10);
 	steps--;
@@ -105,11 +108,11 @@ void HackEBot_Move::TurnR(int S, int Z){ // Turn Right, S = repeat number, Z = S
     while(0 < steps){
     // Start to turn the left wheel CW.
     digitalWrite(servoR, HIGH);
-    delayMicroseconds(turnCW + speed);
+    delayMicroseconds(CenterR + (speedR * speed));
     digitalWrite(servoR, LOW);
     // Start to turn the right wheel CW.
     digitalWrite(servoL, HIGH);
-    delayMicroseconds(turnCW + speed);
+    delayMicroseconds(CenterL + (speedL * speed));
     digitalWrite(servoL, LOW);
     delay(10);
 	steps--;
