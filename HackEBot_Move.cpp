@@ -22,6 +22,32 @@ HackEBot_Move::HackEBot_Move(int L, int R)
   pinMode(servoR, OUTPUT);
 }
 
+HackEBot_Move::ServoSetup(int L, int l, int R, int r){ // Calibrate the servos
+  //-- L  the forward limit of the Left Servo
+  //-- l  the backward limit of the Left Servo
+  //-- R  the forward limit of the Right Servo
+  //-- r  the backward limit of the Right Servo
+  
+  LShift = abs(L - l)/2; // Find the center pulse for the Left Servo
+  if (L < l){ turnCW = LShift + L; } else { turnCW = LShift + l; }
+  
+  RShift = abs(R - r)/2; // Find the center pulse for the Right Servo
+  if (R < r){ turnCCW = RShift + R; } else { turnCCW = RShift + r; }
+  delay(10);
+}
+
+void HackEBot_Move::Calibrate(){ // Calibrate the servos
+  // Start to turn the left wheel CW.
+  digitalWrite(servoR, HIGH);
+  delayMicroseconds(turnCCW);
+  digitalWrite(servoR, LOW);
+  // Start to turn the right wheel CCW.
+  digitalWrite(servoL, HIGH);
+  delayMicroseconds(turnCW);
+  digitalWrite(servoL, LOW);
+  delay(10);
+}
+
 void HackEBot_Move::MoveF(int S, int Z){ // Drive drive forward, S = repeat number, Z = Speed.
   steps = S;
   speed = Z;
@@ -88,16 +114,4 @@ void HackEBot_Move::TurnR(int S, int Z){ // Turn Right, S = repeat number, Z = S
     delay(10);
 	steps--;
   }
-}
-
-void HackEBot_Move::Calibrate(){ // Calibrate the servos
-  // Start to turn the left wheel CW.
-  digitalWrite(servoR, HIGH);
-  delayMicroseconds(turnCCW);
-  digitalWrite(servoR, LOW);
-  // Start to turn the right wheel CCW.
-  digitalWrite(servoL, HIGH);
-  delayMicroseconds(turnCW);
-  digitalWrite(servoL, LOW);
-  delay(10);
 }
