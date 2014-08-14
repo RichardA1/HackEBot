@@ -10,7 +10,7 @@
 
 void setup()
 {
-robot.ServoSetup(2100, 900, 900, 2100);
+robot.ServoSetup(1500, 1500);
 }
 
 int MoveSpeed = 100;
