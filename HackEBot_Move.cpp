@@ -20,25 +20,20 @@ HackEBot_Move::HackEBot_Move(int L, int R)
   CenterR = 1500;
   pinMode(servoL, OUTPUT);
   pinMode(servoR, OUTPUT);
-  speedL = 6; // From Data Sheet (1500 - 900)/100 gives us the number we add to center in order to reach 1% speed.
-  speedR = 6;
+  speedL = 2; // From Data Sheet (1500 - 900)/100 gives us the number we add to center in order to reach 1% speed.
+  speedR = 2;
 }
 
-long HackEBot_Move::ServoSetup(int L, int l, int R, int r){ // Calibrate the servos
-  //-- L  the forward limit of the Left Servo
-  //-- l  the backward limit of the Left Servo
-  //-- R  the forward limit of the Right Servo
-  //-- r  the backward limit of the Right Servo
+long HackEBot_Move::ServoSetup(int L, int R){ // Calibrate the servos
+  //-- L  the center of the Left Servo
+  //-- R  the center of the Right Servo
   
-  LShift = abs(L - l)/2; // Find the center pulse for the Left Servo
-  CenterL = LShift + max(L, l);
-  
-  RShift = abs(R - r)/2; // Find the center pulse for the Right Servo
-  CenterR = RShift + max(R, r);
+  CenterL = L;
+  CenterR = R;
   delay(10);
   
-  speedL = round(LShift/100);
-  speedR = round(RShift/100);
+  //speedL = round(LShift/100);
+  //speedR = round(RShift/100);
 }
 
 void HackEBot_Move::Calibrate(){ // Calibrate the servos
