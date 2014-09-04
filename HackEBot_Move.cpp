@@ -17,6 +17,7 @@ HackEBot_Move::HackEBot_Move(int L, int R)
   servoL = L;
   servoR = R;
   UpperL = 2100; //-- Upper pulse for the FS90R Servo from Data Sheet (2100us)
+<<<<<<< HEAD
   CenterL = 1500; //-- Center pulse for the FS90R Servo from Data Sheet (between 900us and 2100us)
   LowerL = 900; //-- Lower pulse for the FS90R Servo from Data Sheet (900us)
   UpperR = 2100; //-- Upper pulse for the FS90R Servo from Data Sheet (2100us)
@@ -29,6 +30,20 @@ HackEBot_Move::HackEBot_Move(int L, int R)
 }
 
 long HackEBot_Move::ServoSetup(int D, int F, int G, int H, int J, int K){ // This is used to tell the Arduino exactly what the pulse range is for each servo.
+=======
+  CenterL = 1500; //-- Center pulse for the FS90R Servo from Data Sheet (beween 900us and 2100us)
+  LowerL = 900; //-- Lower pulse for the FS90R Servo from Data Sheet (900us)
+  UpperR = 2100; //-- Upper pulse for the FS90R Servo from Data Sheet (2100us)
+  CenterR = 1500; //-- Center pulse for the FS90R Servo from Data Sheet (beween 900us and 2100us)
+  LowerR = 900; //-- Lower pulse for the FS90R Servo from Data Sheet (900us)
+  pinMode(servoL, OUTPUT);
+  pinMode(servoR, OUTPUT);
+  speedL = 2; // From Data Sheet (1500 - 900)/100 gives us the number we add to center in order to reach 1% speed.
+  speedR = 2;
+}
+
+long HackEBot_Move::ServoSetup(int D, int F, int, G, int H, int J, int K){ // This is used to tell the Arduino exsactly what the pulce rainge is for each servo.
+>>>>>>> 86dd206d720f6430031a4b8dcadedb81e1537a8b
   
   UpperL = D;  //-- D  the upper limit of the Left Servo
   CenterL = F;  //-- F  the center point of the Left Servo
@@ -54,7 +69,11 @@ void HackEBot_Move::Calibrate(){ // Calibrate the servos
   digitalWrite(servoR, HIGH);
   delayMicroseconds(CenterR);
   digitalWrite(servoR, LOW);
+<<<<<<< HEAD
   //delay(10);
+=======
+  delay(10);
+>>>>>>> 86dd206d720f6430031a4b8dcadedb81e1537a8b
 }
 
 void HackEBot_Move::MoveF(int S, int Z){ // Drive drive forward, S = repeat number, Z = Speed.
@@ -69,7 +88,11 @@ void HackEBot_Move::MoveF(int S, int Z){ // Drive drive forward, S = repeat numb
       digitalWrite(servoR, HIGH);
       delayMicroseconds(CenterR - map(speed, LowerR, CenterR, 0, 100));
       digitalWrite(servoR, LOW);
+<<<<<<< HEAD
       //delay(10);
+=======
+      delay(10);
+>>>>>>> 86dd206d720f6430031a4b8dcadedb81e1537a8b
 	steps--;
   }
 }
@@ -86,7 +109,11 @@ void HackEBot_Move::MoveB(int S, int Z){ // Drive drive backward, S = repeat num
     digitalWrite(servoR, HIGH);
     delayMicroseconds(CenterR + map(speed, CenterR, UpperR, 0, 100));
     digitalWrite(servoR, LOW);
+<<<<<<< HEAD
     //delay(10);
+=======
+    delay(10);
+>>>>>>> 86dd206d720f6430031a4b8dcadedb81e1537a8b
 	steps--;
   }
 }
@@ -103,7 +130,11 @@ void HackEBot_Move::TurnL(int S, int Z){ // Turn Left, S = repeat number, Z = Sp
     digitalWrite(servoR, HIGH);
     delayMicroseconds(CenterR + map(speed, CenterR, UpperR, 0, 100));
     digitalWrite(servoR, LOW);
+<<<<<<< HEAD
     //delay(10);
+=======
+    delay(10);
+>>>>>>> 86dd206d720f6430031a4b8dcadedb81e1537a8b
 	steps--;
   }
 }
@@ -120,7 +151,11 @@ void HackEBot_Move::TurnR(int S, int Z){ // Turn Right, S = repeat number, Z = S
     digitalWrite(servoR, HIGH);
     delayMicroseconds(CenterR - map(speed, LowerR, CenterR, 0, 100));
     digitalWrite(servoR, LOW);
+<<<<<<< HEAD
     //delay(10);
+=======
+    delay(10);
+>>>>>>> 86dd206d720f6430031a4b8dcadedb81e1537a8b
 	steps--;
 	
   }

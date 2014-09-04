@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 #ifdef __AVR_ATtiny85__ // Trinket, Gemma, etc.
   #include <avr/power.h>
 #endif
+=======
+>>>>>>> 86dd206d720f6430031a4b8dcadedb81e1537a8b
 #include <HackEBot_Move.h>
 
 // Set-up the movement controls using;
@@ -13,6 +16,7 @@
 
 void setup()
 {
+<<<<<<< HEAD
   #if defined(__AVR_ATtiny85__) && (F_CPU == 16000000L)
   clock_prescale_set(clock_div_1);
   #endif
@@ -25,6 +29,9 @@ void setup()
   // ---- CenterR = the center point of the Right Servo// --  LowerR = the lower limit of the Right Servo
   // -- ServoSetup(UpperL, CenterL, LowerL, UpperR, CenterR, LowerR)
   robot.ServoSetup(2100,1500,900,2100,1500,900);
+=======
+robot.ServoSetup(1500, 1500);
+>>>>>>> 86dd206d720f6430031a4b8dcadedb81e1537a8b
 }
 
 int MoveSpeed = 100;

@@ -11,7 +11,11 @@
 class HackEBot_Move {
   public:
     HackEBot_Move(int L, int R);
+<<<<<<< HEAD
     long ServoSetup(int D, int F, int G, int H, int J, int K); //-- used to manually set the servo limits
+=======
+    long ServoSetup(int D, int F, int, G, int H, int J, int K); //-- used to manually set the servo limits
+>>>>>>> 86dd206d720f6430031a4b8dcadedb81e1537a8b
     void Calibrate(); //-- to Calibrate the servos
     void MoveF(int S, int Z); //-- to drive forward, S = repeat number, Z = Speed.
     void MoveB(int S, int Z); //-- to drive backward, S = repeat number, Z = Speed.
