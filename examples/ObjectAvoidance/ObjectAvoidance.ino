@@ -5,17 +5,17 @@
 #include <HackEBot_Sonar.h>
 
 // HackEBot_Move robot(LeftPin, RightPin);
-   HackEBot_Move robot(12, 7);
+   HackEBot_Move robot(1, 0);
    
-int SonarTrigPin = 4; // 	(Green wire)
-int SonarEchoPin = 2; // 	(Blue wire)
+int SonarTrigPin = 2; // 	(Green wire)
+int SonarEchoPin = 3; // 	(Blue wire)
 
 // Sonar Obstacle(sonarTrig, sonarEcho);
    HackEBot_Sonar Obstacle(SonarTrigPin, SonarEchoPin);
    
-int MoveSpeed = 200;
-int TurnSpeed = 150;
-int ObjDistance = 8;
+int MoveSpeed = 100;
+int TurnSpeed = 50;
+int ObjDistance = 10;
 
 void setup()
 {
@@ -23,6 +23,7 @@ void setup()
   clock_prescale_set(clock_div_1);
 #endif
   // ...
+  robot.ServoSetup(900, 1500, 2100, 900, 1500, 2100);
 }
 
 int randNumber = 0;  // Used to choose a direction to turn
@@ -30,12 +31,12 @@ int randNumber = 0;  // Used to choose a direction to turn
 void loop()
 { 
   if (Obstacle.Ping(ObjDistance)){
-   robot.MoveB(30, MoveSpeed);
+   robot.MoveB(150, MoveSpeed);
    randNumber = random(200);
     if (randNumber < 99) {
-      robot.TurnL(16, TurnSpeed);
+      robot.TurnL(100, TurnSpeed);
     } else {
-      robot.TurnR(16, TurnSpeed);
+      robot.TurnR(100, TurnSpeed);
     }
  } else {
    robot.MoveF(1, MoveSpeed);
