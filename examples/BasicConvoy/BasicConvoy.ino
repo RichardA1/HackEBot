@@ -8,8 +8,8 @@
 // HackEBot_Move robot(LeftPin, RightPin);
    HackEBot_Move robot(12, 7);
    
-int SonarTrigPin = 4; // 	(Green wire)
-int SonarEchoPin = 2; // 	(Blue wire)
+int SonarTrigPin = 4; // 	(Blue wire)
+int SonarEchoPin = 2; // 	(Green wire)
 
 // HackEBot_Sonar Obstacle(sonarTrigPin, sonarEchoPin);
    HackEBot_Sonar Obstacle(SonarTrigPin, SonarEchoPin);
