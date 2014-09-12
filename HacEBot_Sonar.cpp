@@ -16,8 +16,8 @@ HackEBot_Sonar::HackEBot_Sonar(int T, int E)
 {
   sonarTrig = T;
   sonarEcho = E;
-  pinMode(T, OUTPUT); // Sends the chirp (Green)
-  pinMode(E, INPUT); // Listens for the chirp (Blue)
+  pinMode(T, OUTPUT); // Sends the chirp (Blue)
+  pinMode(E, INPUT); // Listens for the chirp (Green)
   
 }
 
