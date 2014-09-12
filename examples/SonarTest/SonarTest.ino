@@ -8,8 +8,8 @@ The same basic format can allow your Hack-E-Bot to react to it's environment.
 #include <HackEBot_Sonar.h>
 
 // Set-up the Sonar sensor for object detection;
-// 		sonarTrig = Sends the chirp (Green wire)
-// 		sonarEcho = Listens for the chirp (Blue wire)
+// 		sonarTrig = Sends the chirp (Blue wire)
+// 		sonarEcho = Listens for the chirp (Green wire)
 // Sonar Obstacle(sonarTrig, sonarEcho);
 HackEBot_Sonar Obstacle(4, 2);
 
